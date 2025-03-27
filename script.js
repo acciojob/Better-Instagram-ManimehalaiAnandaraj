@@ -39,7 +39,6 @@ function dragDrop(e) {
       targetItem.id = draggedItemId;
   }
 }
-
 function dragEnd(e) {
   e.target.style.display = 'block';
   draggedItem = null;
