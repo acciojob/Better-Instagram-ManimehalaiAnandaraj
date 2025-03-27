@@ -1,11 +1,11 @@
-//your code here
 const items=document.querySelectorAll('.image');
 let draggedItem=null;
+
 items.forEach(image =>{
 	image.addEventListener('dragstart',dragStart);
 	image.addEventListener('dragover',dragOver);
 	image.addEventListener('drop',dragDrop);
-	image.addEventListener('drageng',dragEnd);
+	image.addEventListener('dragend',dragEnd);
 });
 
 function dragStart(e) {
@@ -20,12 +20,10 @@ function dragOver(e) {
 	e.preventDefault();
 }
 
-
 function dragDrop(e) {
 	e.preventDefault();
 	const targetItem=e.target;
 
-	
 	if (targetItem !== draggedItem && targetItem.classList.contains('image')) 
 	{
       const draggedItemId = draggedItem.id;
@@ -46,5 +44,3 @@ function dragEnd(e) {
   e.target.style.display = 'block';
   draggedItem = null;
 }
-
-
