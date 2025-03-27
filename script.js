@@ -5,6 +5,7 @@ items.forEach(image =>{
 	image.addEventListener('dragstart',dragStart);
 	image.addEventListener('dragover',dragOver);
 	image.addEventListener('drop',dragDrop);
+	image.addEventListener('drageng',dragEnd);
 });
 
 function dragStart(e) {
