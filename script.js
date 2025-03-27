@@ -23,7 +23,9 @@ function dragDrop(e) {
 	e.prevventDefault();
 	const targetItem=e.target;
 
-if (targetItem !== draggedItem && targetItem.classList.contains('image')) {
+	
+	if (targetItem !== draggedItem && targetItem.classList.contains('image')) 
+	{
       const draggedItemId = draggedItem.id;
       const targetItemId = targetItem.id;
 
@@ -39,6 +41,7 @@ if (targetItem !== draggedItem && targetItem.classList.contains('image')) {
   draggedItem.style.visibility = 'visible';
   draggedItem = null;
 }
+
 
 
 
