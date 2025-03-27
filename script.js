@@ -19,6 +19,9 @@ function dragOver(e) {
 	e.preventDefault();
 }
 
+console.log(droppable);
+const coords = droppable.getBoundingClientRect();
+
 function dragDrop(e) {
 	e.preventDefault();
 	const targetItem=e.target;
