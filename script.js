@@ -11,7 +11,7 @@ function dragStart(e) {
 	draggedItem=e.target;
 	e.dataTransfer.setData('text',e.target.id);
 	setTimeout(() =>{
-		e.target.style.visibility='hidden';
+		e.target.style.display='none';
 	},0);
 }
 
@@ -39,10 +39,11 @@ function dragDrop(e) {
       draggedItem.id = targetItemId;
       targetItem.id = draggedItemId;
   }
-  draggedItem.style.visibility = 'visible';
-  draggedItem = null;
 }
 
-
+function dragEnd(e) {
+  e.target.style.display = 'block';
+  draggedItem = null;
+}
 
 
