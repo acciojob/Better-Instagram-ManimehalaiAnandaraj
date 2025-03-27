@@ -20,7 +20,7 @@ function dragOver(e) {
 }
 
 function dragDrop(e) {
-	e.prevventDefault();
+	e.preventDefault();
 	const targetItem=e.target;
 
 	
