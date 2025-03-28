@@ -1,7 +1,7 @@
-const items=document.querySelectorAll('.image');
+const items=document.querySelectorAll('.parent');
 let draggedItem=null;
 
-items.forEach(image =>{
+items.forEach(parent =>{
 	image.addEventListener('dragstart',dragStart);
 	image.addEventListener('dragover',dragOver);
 	image.addEventListener('drop',dragDrop);
@@ -24,7 +24,7 @@ function dragDrop(e) {
 	e.preventDefault();
 	const targetItem=e.target;
 
-	if (targetItem !== draggedItem && targetItem.classList.contains('image')) 
+	if (targetItem !== draggedItem && targetItem.classList.contains('.parent')) 
 	{
       const draggedItemId = draggedItem.id;
       const targetItemId = targetItem.id;
