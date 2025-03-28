@@ -1,3 +1,4 @@
+		import '@4tw/cypress-drag-drop'
 it('should drag and drop', () => {
   for (let index = 1; index <= 6; index++) {
     // Wait for the element to exist before running the test
