@@ -4,7 +4,7 @@
 	     const gridItems = document.querySelectorAll('.image');
             let draggedItem = null;
             
-            // Add event listeners for drag and drop
+            
             gridItems.forEach(item => {
                 item.addEventListener('dragstart', handleDragStart);
                 item.addEventListener('dragover', handleDragOver);
@@ -18,8 +18,6 @@
                 draggedItem = this;
                 this.classList.add('dragging');
                 e.dataTransfer.effectAllowed = 'move';
-                // Firefox requires data to be set for drag to work
-                e.dataTransfer.setData('text/html', this.innerHTML);
             }
             
             function handleDragOver(e) {
@@ -42,7 +40,7 @@
                 e.preventDefault();
                 
                 if (draggedItem !== this) {
-                    // Swap background images
+                    
                     const draggedBg = draggedItem.style.backgroundImage;
                     const targetBg = this.style.backgroundImage;
                     
@@ -61,3 +59,4 @@
                 });
             }
         });
+}
