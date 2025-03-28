@@ -1,57 +1,19 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const gridItems = document.querySelectorAll('.image');
-    let draggedItem = null;
-    
-    gridItems.forEach(item => {
-        item.addEventListener('dragstart', handleDragStart);
-        item.addEventListener('dragover', handleDragOver);
-        item.addEventListener('dragenter', handleDragEnter);
-        item.addEventListener('dragleave', handleDragLeave);
-        item.addEventListener('drop', handleDrop);
-        item.addEventListener('dragend', handleDragEnd);
+it('should drag and drop', () => {
+  for (let index = 1; index <= 6; index++) {
+    // Wait for the element to exist before running the test
+    cy.get(`#div${index}`).should('exist').then(($el) => {
+      const draggable = $el[0];
+      const droppable = Cypress.$(`#div${(index % 6) + 1}`)[0];
+      const coords = droppable.getBoundingClientRect();
+
+      draggable.dispatchEvent(new MouseEvent('mousedown'));
+      draggable.dispatchEvent(new MouseEvent('mousemove', { clientX: 10, clientY: 0 }));
+      draggable.dispatchEvent(new MouseEvent('mousemove', { clientX: coords.x + 10, clientY: coords.y + 10 }));
+      draggable.dispatchEvent(new MouseEvent('mouseup'));
+
+      cy.get(`#div${(index % 6) + 1}`).within(() => {
+        cy.get('img').should('have.length', 1);
+      });
     });
-
-    function handleDragStart(e) {
-        draggedItem = this;
-        this.classList.add('dragging');
-        e.dataTransfer.effectAllowed = 'move';
-    }
-
-    function handleDragOver(e) {
-        e.preventDefault();
-        e.dataTransfer.dropEffect = 'move';
-        return false;
-    }
-
-    function handleDragEnter(e) {
-        e.preventDefault();
-        this.classList.add('over');
-    }
-
-    function handleDragLeave(e) {
-        this.classList.remove('over');
-    }
-
-    function handleDrop(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        
-        if (draggedItem !== this) {
-            const draggedBg = draggedItem.style.backgroundImage;
-            const targetBg = this.style.backgroundImage;
-            
-            draggedItem.style.backgroundImage = targetBg;
-            this.style.backgroundImage = draggedBg;
-        }
-        
-        this.classList.remove('over');
-        return false;
-    }
-
-    function handleDragEnd() {
-        this.classList.remove('dragging');
-        gridItems.forEach(item => {
-            item.classList.remove('over');
-        });
-    }
-}); 
+  }
+});
