@@ -1,7 +1,7 @@
 it('should drag and drop', () => {
   for (let index = 1; index <= 6; index++) {
     // Wait for the element to exist before running the test
-    cy.get(`#div${index}`).should('exist').then(($el) => {
+    cy.get(`#div${index}`).drag(`#div${(index % 6) + 1}`);
       const draggable = $el[0];
       const droppable = Cypress.$(`#div${(index % 6) + 1}`)[0];
       const coords = droppable.getBoundingClientRect();
