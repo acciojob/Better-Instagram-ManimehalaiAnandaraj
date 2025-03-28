@@ -1,45 +1,63 @@
-const items=document.querySelectorAll('.parent');
-let draggedItem=null;
+  document.addEventListener('DOMContentLoaded', function() {
 
-items.forEach(parent =>{
-	image.addEventListener('dragstart',dragStart);
-	image.addEventListener('dragover',dragOver);
-	image.addEventListener('drop',dragDrop);
-	image.addEventListener('dragend',dragEnd);
-});
 
-function dragStart(e) {
-	draggedItem=e.target;
-	e.dataTransfer.setData('text',e.target.id);
-	setTimeout(() =>{
-		e.target.style.display='none';
-	},0);
-}
-
-function dragOver(e) {
-	e.preventDefault();
-}
-
-function dragDrop(e) {
-	e.preventDefault();
-	const targetItem=e.target;
-
-	if (targetItem !== draggedItem && targetItem.classList.contains('.parent')) 
-	{
-      const draggedItemId = draggedItem.id;
-      const targetItemId = targetItem.id;
-
-      const draggedItemBg = getComputedStyle(draggedItem).backgroundImage;
-      const targetItemBg = getComputedStyle(targetItem).backgroundImage;
-      
-      draggedItem.style.backgroundImage = targetItemBg;
-      targetItem.style.backgroundImage = draggedItemBg;
-      
-      draggedItem.id = targetItemId;
-      targetItem.id = draggedItemId;
-  }
-}
-function dragEnd(e) {
-  e.target.style.display = 'block';
-  draggedItem = null;
-}
+	     const gridItems = document.querySelectorAll('.image');
+            let draggedItem = null;
+            
+            // Add event listeners for drag and drop
+            gridItems.forEach(item => {
+                item.addEventListener('dragstart', handleDragStart);
+                item.addEventListener('dragover', handleDragOver);
+                item.addEventListener('dragenter', handleDragEnter);
+                item.addEventListener('dragleave', handleDragLeave);
+                item.addEventListener('drop', handleDrop);
+                item.addEventListener('dragend', handleDragEnd);
+            });
+            
+            function handleDragStart(e) {
+                draggedItem = this;
+                this.classList.add('dragging');
+                e.dataTransfer.effectAllowed = 'move';
+                // Firefox requires data to be set for drag to work
+                e.dataTransfer.setData('text/html', this.innerHTML);
+            }
+            
+            function handleDragOver(e) {
+                e.preventDefault();
+                e.dataTransfer.dropEffect = 'move';
+                return false;
+            }
+            
+            function handleDragEnter(e) {
+                e.preventDefault();
+                this.classList.add('over');
+            }
+            
+            function handleDragLeave(e) {
+                this.classList.remove('over');
+            }
+            
+            function handleDrop(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                
+                if (draggedItem !== this) {
+                    // Swap background images
+                    const draggedBg = draggedItem.style.backgroundImage;
+                    const targetBg = this.style.backgroundImage;
+                    
+                    draggedItem.style.backgroundImage = targetBg;
+                    this.style.backgroundImage = draggedBg;
+                }
+                
+                this.classList.remove('over');
+                return false;
+            }
+            
+            function handleDragEnd() {
+                this.classList.remove('dragging');
+                gridItems.forEach(item => {
+                    item.classList.remove('over');
+                });
+            }
+        });

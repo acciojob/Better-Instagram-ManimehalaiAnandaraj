@@ -3,7 +3,20 @@
   height: 300px;
   width: 200px;
   margin: 20px;
+
 }
+.image{
+	cursor:move;
+}
+.image:hover {
+            transform: scale(1.02);
+            border-color: #999;
+        }
+        
+        .image.dragging {
+            opacity: 0.5;
+            transform: scale(1.05);
+        }
 
 #div2 {
   background-image: url("https://picsum.photos/seed/picsum/200/300");
@@ -48,6 +61,7 @@ div.container {
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 .selected {
