@@ -12,7 +12,7 @@ it('should drag and drop', () => {
       draggable.dispatchEvent(new MouseEvent('mouseup'));
 
       cy.get(`#div${(index % 6) + 1}`).within(() => {
-        cy.get('img').should('have.length', 1);
+        cy.get('image').should('have.length', 1);
       });
     });
   }
