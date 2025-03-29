@@ -1,19 +1,47 @@
-		import '@4tw/cypress-drag-drop'
-it('should drag and drop', () => {
-  for (let index = 1; index <= 6; index++) {
-    // Wait for the element to exist before running the test
-    cy.get(`#div${index}`).drag(`#div${(index % 6) + 1}`);
-      const draggable = $el[0];
-      const droppable = Cypress.$(`#div${(index % 6) + 1}`)[0];
-      const coords = droppable.getBoundingClientRect();
-
-      draggable.dispatchEvent(new MouseEvent('mousedown'));
-      draggable.dispatchEvent(new MouseEvent('mousemove', { clientX: 10, clientY: 0 }));
-      draggable.dispatchEvent(new MouseEvent('mousemove', { clientX: coords.x + 10, clientY: coords.y + 10 }));
-      draggable.dispatchEvent(new MouseEvent('mouseup'));
-
-      cy.get(`#div${(index % 6) + 1}`).within(() => {
-        cy.get('img').should('have.length', 1);
-      });
-  }
-});
+ document.addEventListener('DOMContentLoaded', function() {
+            const gridItems = document.querySelectorAll('.image');
+            let draggedItem = null;
+            
+            // Set background images (normally this would be in style.css)
+            gridItems.forEach((item, index) => {
+                item.style.backgroundImage = `url('https://picsum.photos/300/200?random=${index + 1}')`;
+            });
+            
+            // Drag start event
+            gridItems.forEach(item => {
+                item.addEventListener('dragstart', function() {
+                    draggedItem = this;
+                    setTimeout(() => {
+                        this.classList.add('dragging');
+                    }, 0);
+                });
+                
+                item.addEventListener('dragend', function() {
+                    this.classList.remove('dragging');
+                });
+                
+                item.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                });
+                
+                item.addEventListener('dragenter', function(e) {
+                    e.preventDefault();
+                    this.classList.add('hovered');
+                });
+                
+                item.addEventListener('dragleave', function() {
+                    this.classList.remove('hovered');
+                });
+                
+                item.addEventListener('drop', function() {
+                    this.classList.remove('hovered');
+                    
+                    if (draggedItem !== this) {
+                        // Swap background images
+                        const tempBg = draggedItem.style.backgroundImage;
+                        draggedItem.style.backgroundImage = this.style.backgroundImage;
+                        this.style.backgroundImage = tempBg;
+                    }
+                });
+            });
+        });
