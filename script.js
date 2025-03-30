@@ -4,7 +4,7 @@
             
             
             gridItems.forEach((item, index) => {
-				 item.style.backgroundImage = `url('https://picsum.photos/300/200?random=${index + 1}')`;
+				 item.style.backgroundImage = `url('https://picsum.photos/300/200?random=div${index + 1}')`;
                       
             });
             
