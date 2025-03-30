@@ -1,4 +1,8 @@
- document.addEventListener('DOMContentLoaded', function() {
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
             const gridItems = document.querySelectorAll('.image');
             let draggedItem = null;
             
@@ -33,9 +37,7 @@
                 item.addEventListener('dragleave', function() {
                     this.classList.remove('hovered');
                 });
-				function allowDrop(ev) {
-  ev.preventDefault();
-}
+				
                 
                 item.addEventListener('drop', function() {
                     this.classList.remove('hovered');
