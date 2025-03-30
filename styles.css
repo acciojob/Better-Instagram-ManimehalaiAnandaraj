@@ -1,4 +1,4 @@
-#div1 {
+#drag1 {
  
   height: 300px;
   width: 200px;
@@ -20,28 +20,28 @@
             transform: scale(1.05);
         }
 
-#div2 {
+#drag2 {
   
   height: 300px;
   width: 200px;
   margin: 20px;
 }
 
-#div3 {
+#drag3 {
   
   height: 300px;
   width: 200px;
   margin: 20px;
 }
 
-#div4 {
+#drag4 {
   
   height: 300px;
   width: 200px;
   margin: 20px;
 }
 
-#div5 {
+#drag5 {
   background-image: url('https://picsum.photos/300/200?random=5');
   height: 300px;
   width: 200px;
