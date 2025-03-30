@@ -33,6 +33,9 @@
                 item.addEventListener('dragleave', function() {
                     this.classList.remove('hovered');
                 });
+				function allowDrop(ev) {
+  ev.preventDefault();
+}
                 
                 item.addEventListener('drop', function() {
                     this.classList.remove('hovered');
