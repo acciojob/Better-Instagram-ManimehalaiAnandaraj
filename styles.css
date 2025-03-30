@@ -1,5 +1,5 @@
 #div1 {
- background-image: url('https://picsum.photos/300/200?random=1');
+ 
   height: 300px;
   width: 200px;
   margin: 20px;
@@ -21,21 +21,21 @@
         }
 
 #div2 {
-  background-image: url('https://picsum.photos/300/200?random=2');
+  
   height: 300px;
   width: 200px;
   margin: 20px;
 }
 
 #div3 {
-  background-image: url('https://picsum.photos/300/200?random=3');
+  
   height: 300px;
   width: 200px;
   margin: 20px;
 }
 
 #div4 {
-  background-image: url('https://picsum.photos/300/200?random=4');
+  
   height: 300px;
   width: 200px;
   margin: 20px;
@@ -49,7 +49,7 @@
 }
 
 #div6 {
-  background-image: url('https://picsum.photos/300/200?random=6');
+  
   height: 300px;
   width: 200px;
   margin: 20px;
