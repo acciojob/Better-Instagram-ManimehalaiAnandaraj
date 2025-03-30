@@ -2,8 +2,9 @@
             const gridItems = document.querySelectorAll('.image');
             let draggedItem = null;
             
-            // Set background images (normally this would be in style.css)
+            
             gridItems.forEach((item, index) => {
+				 item.style.backgroundImage = `url('https://picsum.photos/300/200?random=${index + 1}')`;
                 item.setAttribute("id",`div${index+1}`);
             });
             
