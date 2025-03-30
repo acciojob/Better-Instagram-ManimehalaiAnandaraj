@@ -5,7 +5,7 @@
             
             gridItems.forEach((item, index) => {
 				 item.style.backgroundImage = `url('https://picsum.photos/300/200?random=${index + 1}')`;
-                item.setAttribute("id",`div${index+1}`);
+                        item.setAttribute("id", `div${index+1}`); 
             });
             
             // Drag start event
