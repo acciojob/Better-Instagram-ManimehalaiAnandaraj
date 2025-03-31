@@ -17,6 +17,7 @@ let imageUrls =
 	];
 
 gridItems.forEach((item, index) => {
+    item.style.backgroundImage = `url('${imageUrls[index]}')`;
     
 
 	
