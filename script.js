@@ -7,9 +7,19 @@ document.addEventListener('DOMContentLoaded', function() {
   const gridItems = document.querySelectorAll('.image');
   let draggedItem = null;
 
-  gridItems.forEach((item, index) => {
-    item.style.backgroundImage = `url('https://picsum.photos/300/200?random=${index + 1}')`;
+let imageUrls =
+	['https://picsum.photos/id/237/200/300',
+            'https://picsum.photos/seed/picsum/200/300',
+            'https://picsum.photos/200/300.jpg',
+            'https://picsum.photos/200/300/',
+            'https://picsum.photos/id/237/200/300',
+	 'https://picsum.photos/seed/picsum/200/300'
+	];
 
+gridItems.forEach((item, index) => {
+    item.style.backgroundImage = `url('${imageUrls[index]}')`;
+
+	
     item.addEventListener('dragstart', function() {
       draggedItem = this;
       setTimeout(() => {
