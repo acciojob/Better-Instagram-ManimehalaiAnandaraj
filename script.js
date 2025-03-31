@@ -8,16 +8,16 @@ document.addEventListener('DOMContentLoaded', function() {
   let draggedItem = null;
 
 let imageUrls =
-	['https://picsum.photos/id/237/200/300',
+			['https://picsum.photos/id/237/200/300',
             'https://picsum.photos/seed/picsum/200/300',
             'https://picsum.photos/200/300.jpg',
             'https://picsum.photos/200/300/',
             'https://picsum.photos/id/237/200/300',
-	 'https://picsum.photos/seed/picsum/200/300'
+			 'https://picsum.photos/seed/picsum/200/300'
 	];
 
 gridItems.forEach((item, index) => {
-    item.style.backgroundImage = `url('${imageUrls[index]}')`;
+    
 
 	
     item.addEventListener('dragstart', function() {
